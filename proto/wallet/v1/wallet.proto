@@ -1,0 +1,41 @@
+syntax = "proto3";
+package wallet.v1;
+
+import "transaction/v1/transaction.proto";
+
+option go_package = "github.com/web3-template/core/domain/wallet/v1;wallet";
+
+message Wallet {
+  // An enumeration of the supported languages for the wallet.
+  enum Language {
+    LANGUAGE_UNSPECIFIED = 0; // The language is not specified.
+    LANGUAGE_EN = 1; // English language.
+    LANGUAGE_DE = 2; // German language.
+    LANGUAGE_ES = 3; // Spanish language.
+  }
+
+  // An enumeration of the supported themes for the wallet.
+  enum Theme {
+    THEME_UNSPECIFIED = 0; // The theme is not specified.
+    THEME_LIGHT = 1; // Light theme.
+    THEME_DARK = 2; // Dark theme.
+  }
+
+  // The account associated with the wallet.
+  string account = 1;
+
+  // The network ID associated with the wallet.
+  uint64 network_id = 2;
+
+  // The language of the wallet.
+  Language language = 3;
+
+  // The theme of the wallet.
+  Theme theme = 4;
+
+  // A list of transactions associated with the wallet.
+  repeated transaction.v1.Transaction transactions = 5;
+
+  // A list of collectibles associated with the wallet.
+  repeated string collectibles = 6;
+}

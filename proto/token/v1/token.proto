@@ -1,0 +1,17 @@
+syntax = "proto3";
+package token.v1;
+
+option go_package = "github.com/web3-template/core/domain/token/v1;token";
+
+message Token {
+  message Attribute {
+    string name = 1;
+    string value = 2;
+  }
+
+  string name = 1;
+  string description = 2;
+  string image = 3;
+  string external_url = 4;
+  repeated Attribute attributes = 5;
+}

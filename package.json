@@ -1,0 +1,9 @@
+{
+  "name": "web3-template-core",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Amaury Diaz <amauryuh@gmail.com>",
+  "devDependencies": {
+    "@bufbuild/protobuf": "^1.1.1"
+  }
+}

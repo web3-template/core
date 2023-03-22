@@ -1,0 +1,47 @@
+syntax = "proto3";
+package transaction.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/web3-template/core/domain/transaction/v1;transaction";
+
+message Transaction {
+  message ERC1155 {
+    message SafeTransferFrom {
+      string from = 1;
+      string to = 2;
+      uint64 id = 3;
+      uint64 value = 4;
+      bytes data = 5;
+    }
+
+    message SafeBatchTransferFrom {
+      string from = 1;
+      string to = 2;
+      repeated uint64 ids = 3;
+      repeated uint64 values = 4;
+      bytes data = 5;
+    }
+
+    message SetApprovalForAll {
+      string operator = 1;
+      bool approved = 2;
+    }
+  }
+
+  message Metadata {
+    string hash = 1;
+    google.protobuf.Timestamp date = 2;
+    optional string reverted = 3;
+  }
+
+  optional Metadata metadata = 1;
+  string contract = 2;
+  uint32 network = 3;
+
+  oneof data {
+    ERC1155.SafeTransferFrom safe_transfer_from = 4;
+    ERC1155.SafeBatchTransferFrom safe_batch_transfer_from = 5;
+    ERC1155.SetApprovalForAll safe_approval_for_all = 6;
+  }
+}

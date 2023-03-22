@@ -1,0 +1,14 @@
+syntax = "proto3";
+package cmd.v1;
+
+option go_package = "github.com/web3-template/core/domain/cmd/v1;cmd";
+
+message Command {
+    message AddCollectible {
+        string address = 1;
+    }
+
+    oneof command {
+        AddCollectible add_collectible = 1;
+    }
+}
